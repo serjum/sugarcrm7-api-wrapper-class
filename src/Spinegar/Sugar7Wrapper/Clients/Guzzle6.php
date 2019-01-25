@@ -386,8 +386,10 @@ class Guzzle6 implements ClientInterface {
   */
   public function post($endpoint, $parameters = array())
   {
-    return $this->getClient()->request('POST', $endpoint, 
-        array('json' => $parameters));
+      $result = $this->request('POST', $endpoint,
+          array('json' => $parameters));
+
+      return $result;
   }
   
   /**
