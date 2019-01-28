@@ -499,6 +499,22 @@ class Rest {
     return $request;
   }
 
+    public function relateExisting($module, $record, $fields=array())
+    {
+        if(!$this->client->check())
+            $this->client->connect();
+
+        $endpoint = $module . '/' . $record . '/link';
+
+        $request = $this->client->post($endpoint, $fields);
+
+        if(!$request)
+            return false;
+
+        return $request;
+    }
+
+
   /**
   * Function: unrelate()
   * Parameters: $module = Record Type
